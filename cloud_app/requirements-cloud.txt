@@ -1,3 +1,5 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+
 fastapi>=0.115.0
 uvicorn[standard]>=0.30.0
 python-multipart>=0.0.9
@@ -5,7 +7,14 @@ Pillow>=10.0.0
 numpy>=1.24.0
 opencv-python-headless>=4.8.0
 ultralytics>=8.0.0
-torch>=2.0.0
-torchvision>=0.15.0
+
+# CPU-only Torch for Linux cloud builds (Render/Railway)
+torch==2.5.1+cpu; platform_system == "Linux"
+torchvision==0.20.1+cpu; platform_system == "Linux"
+
+# Fallback for non-Linux local environments
+torch>=2.0.0; platform_system != "Linux"
+torchvision>=0.15.0; platform_system != "Linux"
+
 boto3>=1.34.0
 python-dotenv>=1.0.0
