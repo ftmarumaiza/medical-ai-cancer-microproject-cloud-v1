@@ -41,6 +41,18 @@ CONFIDENCE_THRESHOLD = float(os.getenv("CONFIDENCE_THRESHOLD", "0.25"))
 IOU_THRESHOLD = float(os.getenv("IOU_THRESHOLD", "0.45"))
 MAX_IMAGE_DIM = int(os.getenv("MAX_IMAGE_DIM", "640"))
 
+# Binary cancer decision settings for detection outputs.
+# Only labels containing one of these keywords are treated as cancer evidence.
+CANCER_LABEL_KEYWORDS = tuple(
+    part.strip().lower()
+    for part in os.getenv(
+        "CANCER_LABEL_KEYWORDS",
+        "cancer,tumor,tumour,polyp,lesion,malignant,neoplasm,adenoma",
+    ).split(",")
+    if part.strip()
+)
+CANCER_DECISION_CONFIDENCE = float(os.getenv("CANCER_DECISION_CONFIDENCE", "0.50"))
+
 STORAGE_MODE = os.getenv("STORAGE_MODE", "local").lower()  # local | s3
 S3_BUCKET_NAME = os.getenv("S3_BUCKET_NAME", "")
 S3_REGION = os.getenv("S3_REGION", "us-east-1")

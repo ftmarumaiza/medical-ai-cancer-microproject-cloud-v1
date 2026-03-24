@@ -181,3 +181,12 @@ curl -X POST "http://localhost:8000/predict" \
   -H "Content-Type: multipart/form-data" \
   -F "file=@sample.jpg"
 ```
+
+## Cancer Decision Rules
+
+To avoid false positives from non-medical objects (dog, tie, bed, etc.), binary cancer output now uses:
+
+- `CANCER_LABEL_KEYWORDS` (default: `cancer,tumor,tumour,polyp,lesion,malignant,neoplasm,adenoma`)
+- `CANCER_DECISION_CONFIDENCE` (default: `0.50`)
+
+Only detections matching these medical keywords and minimum confidence are counted as cancer evidence.
