@@ -1,4 +1,4 @@
-﻿"""
+"""
 Configuration for the cloud-ready FastAPI application.
 """
 
@@ -52,7 +52,7 @@ CANCER_LABEL_KEYWORDS = tuple(
 )
 CANCER_POSITIVE_LABELS = tuple(
     part.strip().lower()
-    for part in os.getenv("CANCER_POSITIVE_LABELS", "").split(",")
+    for part in os.getenv("CANCER_POSITIVE_LABELS", "polyp,0,bed").split(",")
     if part.strip()
 )
 CANCER_DECISION_CONFIDENCE = float(os.getenv("CANCER_DECISION_CONFIDENCE", "0.25"))
@@ -61,3 +61,4 @@ STORAGE_MODE = os.getenv("STORAGE_MODE", "local").lower()  # local | s3
 S3_BUCKET_NAME = os.getenv("S3_BUCKET_NAME", "")
 S3_REGION = os.getenv("S3_REGION", "us-east-1")
 S3_PREFIX = os.getenv("S3_PREFIX", "medical-uploads")
+
