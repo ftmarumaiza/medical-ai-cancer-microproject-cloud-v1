@@ -1,4 +1,4 @@
-const form = document.getElementById("predict-form");
+﻿const form = document.getElementById("predict-form");
 const fileInput = document.getElementById("image-input");
 const previewWrap = document.getElementById("preview-wrap");
 const previewImage = document.getElementById("preview");
@@ -12,6 +12,7 @@ const resultCard = document.getElementById("result-card");
 const diagnosisBadge = document.getElementById("diagnosis-badge");
 const diagnosisText = document.getElementById("diagnosis-text");
 const confidenceText = document.getElementById("confidence-text");
+const topLabelText = document.getElementById("top-label-text");
 const objectsText = document.getElementById("objects-text");
 const timeText = document.getElementById("time-text");
 const filenameText = document.getElementById("filename-text");
@@ -60,9 +61,12 @@ function renderPrediction(payload) {
   const diagnosis = payload.result || (payload.cancer_present ? "Cancer Detected" : "No Cancer Detected");
   const objectCount = payload.metrics?.total_objects ?? payload.detections?.length ?? 0;
   const processingMs = payload.metrics?.processing_time_ms;
+  const topDetection = payload.top_detection || payload.detections?.[0] || null;
+  const topLabel = topDetection?.label || "-";
 
   diagnosisText.textContent = diagnosis;
   confidenceText.textContent = formatConfidence(payload.confidence);
+  topLabelText.textContent = topLabel;
   objectsText.textContent = String(objectCount);
   timeText.textContent = formatProcessingTime(processingMs);
   filenameText.textContent = payload.filename || "-";

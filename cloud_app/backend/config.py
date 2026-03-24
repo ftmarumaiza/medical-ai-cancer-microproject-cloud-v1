@@ -1,4 +1,4 @@
-"""
+﻿"""
 Configuration for the cloud-ready FastAPI application.
 """
 
@@ -40,6 +40,22 @@ DEVICE = os.getenv("DEVICE", "cpu")
 CONFIDENCE_THRESHOLD = float(os.getenv("CONFIDENCE_THRESHOLD", "0.25"))
 IOU_THRESHOLD = float(os.getenv("IOU_THRESHOLD", "0.45"))
 MAX_IMAGE_DIM = int(os.getenv("MAX_IMAGE_DIM", "640"))
+
+# Cancer decision settings (used for cloud binary output)
+CANCER_LABEL_KEYWORDS = tuple(
+    part.strip().lower()
+    for part in os.getenv(
+        "CANCER_LABEL_KEYWORDS",
+        "cancer,tumor,tumour,polyp,lesion,malignant,neoplasm,adenoma",
+    ).split(",")
+    if part.strip()
+)
+CANCER_POSITIVE_LABELS = tuple(
+    part.strip().lower()
+    for part in os.getenv("CANCER_POSITIVE_LABELS", "").split(",")
+    if part.strip()
+)
+CANCER_DECISION_CONFIDENCE = float(os.getenv("CANCER_DECISION_CONFIDENCE", "0.25"))
 
 STORAGE_MODE = os.getenv("STORAGE_MODE", "local").lower()  # local | s3
 S3_BUCKET_NAME = os.getenv("S3_BUCKET_NAME", "")
