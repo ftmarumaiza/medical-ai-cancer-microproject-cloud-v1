@@ -25,7 +25,46 @@
 
       <section class="result-wrap">
         <h2>Prediction Result</h2>
-        <pre id="result">No prediction yet.</pre>
+
+        <p id="result-empty" class="result-empty">No prediction yet.</p>
+        <p id="result-loading" class="result-loading hidden">Sending image to server and running inference...</p>
+        <p id="result-error" class="result-error hidden"></p>
+
+        <div id="result-card" class="result-card hidden">
+          <p id="diagnosis-badge" class="diagnosis-badge">No Result</p>
+
+          <div class="result-grid">
+            <div class="result-item">
+              <span>Diagnosis</span>
+              <strong id="diagnosis-text">-</strong>
+            </div>
+            <div class="result-item">
+              <span>Confidence</span>
+              <strong id="confidence-text">-</strong>
+            </div>
+            <div class="result-item">
+              <span>Detected Objects</span>
+              <strong id="objects-text">-</strong>
+            </div>
+            <div class="result-item">
+              <span>Processing Time</span>
+              <strong id="time-text">-</strong>
+            </div>
+            <div class="result-item">
+              <span>Uploaded File</span>
+              <strong id="filename-text">-</strong>
+            </div>
+            <div class="result-item">
+              <span>Storage</span>
+              <strong id="storage-text">-</strong>
+            </div>
+          </div>
+
+          <details class="raw-json-wrap">
+            <summary>Show Raw JSON</summary>
+            <pre id="result-raw"></pre>
+          </details>
+        </div>
       </section>
     </section>
   </main>
