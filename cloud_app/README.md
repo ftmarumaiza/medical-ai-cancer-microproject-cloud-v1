@@ -190,3 +190,20 @@ To avoid false positives from non-medical objects (dog, tie, bed, etc.), binary 
 - `CANCER_DECISION_CONFIDENCE` (default: `0.50`)
 
 Only detections matching these medical keywords and minimum confidence are counted as cancer evidence.
+
+## Cancer Decision Rules
+
+To avoid false positives from non-medical objects (dog, tie, bed, etc.), binary cancer output now uses:
+
+- `CANCER_LABEL_KEYWORDS` (default: `cancer,tumor,tumour,polyp,lesion,malignant,neoplasm,adenoma`)
+- `CANCER_POSITIVE_LABELS` (optional exact/contains labels, example: `polyp,0`)
+- `CANCER_DECISION_CONFIDENCE` (default: `0.25`)
+- `ENABLE_NONCOCO_FALLBACK` (default: `true`)
+
+Decision modes:
+
+- `label_match`: direct keyword/positive label match.
+- `non_coco_fallback`: custom model non-COCO class name with confidence threshold.
+- `none`: no cancer evidence detected.
+
+Important: for meaningful medical predictions, set `MODEL_PATH=../best.pt` (your trained medical model).
