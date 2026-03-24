@@ -1,0 +1,18 @@
+# Medical AI Detection System - Dependencies
+# Python 3.10+
+
+# Core ML
+torch>=2.0.0
+torchvision>=0.15.0
+ultralytics>=8.0.0
+
+# Web UI
+streamlit>=1.28.0
+
+# Image & data
+Pillow>=10.0.0
+numpy>=1.24.0
+opencv-python-headless>=4.8.0
+
+# Utilities
+python-dotenv>=1.0.0

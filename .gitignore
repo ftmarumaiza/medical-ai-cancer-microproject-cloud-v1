@@ -1,0 +1,32 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments / local interpreter folders
+venv/
+.venv/
+Env/
+Lib/
+Include/
+Scripts/
+pyvenv.cfg
+
+# Generated app data
+uploads/
+pseudo_labels/
+cloud_app/cloud_storage/uploads/*
+!cloud_app/cloud_storage/uploads/.gitkeep
+
+# Local datasets and experiment outputs
+dataset/
+runs/
+
+# Logs and temp
+*.log
+*.tmp
+
+# OS files
+.DS_Store
+Thumbs.db

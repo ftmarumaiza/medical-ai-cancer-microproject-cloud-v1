@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Medical Cancer Detection</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <main class="container">
+    <section class="card">
+      <h1>Medical Image Cancer Detection</h1>
+      <p class="subtitle">Upload image -> server inference -> prediction result</p>
+
+      <form id="predict-form">
+        <label for="image-input" class="label">Upload Medical Image</label>
+        <input id="image-input" name="file" type="file" accept="image/*" required />
+        <button id="predict-btn" type="submit">Predict</button>
+      </form>
+
+      <div id="preview-wrap" class="preview-wrap hidden">
+        <h2>Selected Image</h2>
+        <img id="preview" alt="Uploaded preview" />
+      </div>
+
+      <section class="result-wrap">
+        <h2>Prediction Result</h2>
+        <pre id="result">No prediction yet.</pre>
+      </section>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
